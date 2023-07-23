@@ -12,7 +12,7 @@ const PrimaryButton = ({ text, onClick, isDisabled }) => {
     //   <div className="">{text}</div>
     // </button>
     <button
-      className="bg-[#03194B] hover:bg-[#004cff] m-2 text-center p-4 text-white rounded-[8px] text-base md:text-lg"
+      className="bg-[#03194B] hover:bg-[#004cff] m-2 w-40 text-center p-4 text-white rounded-[8px] text-base md:text-lg"
       onClick={onClick}
       disabled={isDisabled}
     >
