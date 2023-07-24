@@ -19,7 +19,7 @@ const InputField = ({
         {label}
       </label>
       <input
-        className="shadow bg-[#1E1D1D] rounded-[7px] py-3 px-4 w-full text-white focus:shadow-outline"
+        className="shadow bg-transparent rounded-[7px] py-3 px-4 w-full border-4 text-white focus:blue-outline"
         type={type}
         id={name}
         name={name}

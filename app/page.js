@@ -2,13 +2,19 @@
 import Image from "next/image";
 import InputField from "./components/inputField";
 import PrimaryButton from "./components/primaryButton";
+import { MintNFT } from "./mintButton";
 import { useAccount, useConnect, useDisconnect } from "wagmi";
-
+import { useState } from "react";
+export var inputData;
 export default function Home() {
+  const [inputdata, setInputData] = useState("");
   const { address, connector, isConnected } = useAccount();
   const { connect, connectors, error, isLoading, pendingConnector } =
     useConnect();
-
+  const changingData = (e) => {
+    setInputData(e.target.value);
+    inputData = inputdata;
+  };
   const handleConnect = async (selectedConnector) => {
     await connect({ connector: selectedConnector });
   };
@@ -49,7 +55,7 @@ export default function Home() {
           priority
         />
       </div>
-      <InputField />
+      <InputField value={inputdata} onChange={changingData} />
       <div className="flex">
         {connectors.map((connector, index) => (
           <div key={index}>
@@ -59,9 +65,9 @@ export default function Home() {
                 handleConnect(connector);
               }}
             />
-            <PrimaryButton text="Send" />
           </div>
         ))}
+        <MintNFT />
       </div>
     </main>
   );
