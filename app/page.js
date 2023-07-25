@@ -1,10 +1,12 @@
 "use client";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import InputField from "./components/inputField";
 import PrimaryButton from "./components/primaryButton";
 import { MintNFT } from "./mintButton";
 import { useAccount, useConnect, useDisconnect } from "wagmi";
-import { useState } from "react";
+import getWeb3Instance from "./components/web3helper";
+
 export var inputData;
 export default function Home() {
   const [inputdata, setInputData] = useState("");
@@ -15,6 +17,18 @@ export default function Home() {
     setInputData(e.target.value);
     inputData = inputdata;
   };
+  useEffect(() => {
+    const initWeb3 = async () => {
+      try {
+        const web3 = await getWeb3Instance();
+        const [from] = await web3.eth.getAccounts();
+        console.log(from);
+      } catch (error) {
+        console.error("Error initializing web3:", error);
+      }
+    };
+    initWeb3();
+  }, []);
   const handleConnect = async (selectedConnector) => {
     await connect({ connector: selectedConnector });
   };
