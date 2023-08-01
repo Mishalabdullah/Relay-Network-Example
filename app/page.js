@@ -16,6 +16,7 @@ export default function Home() {
   const changingData = (e) => {
     setInputData(e.target.value);
     inputData = inputdata;
+    console.log(inputData);
   };
   useEffect(() => {
     const initWeb3 = async () => {
