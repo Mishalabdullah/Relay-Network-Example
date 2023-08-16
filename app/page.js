@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import InputField from "./components/inputField";
 import PrimaryButton from "./components/primaryButton";
-import { MintNFT } from "./mintButton";
+import MintNFT from "./mintButton";
 import { useAccount, useConnect, useDisconnect } from "wagmi";
 import getWeb3Instance from "./components/web3helper";
 
